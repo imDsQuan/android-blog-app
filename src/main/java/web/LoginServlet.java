@@ -1,13 +1,19 @@
 package web;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import controller.accountDAO.AccountDAOImpl;
+import model.customer.Account;
 
 /**
  * Servlet implementation class LoginServlet
@@ -40,10 +46,23 @@ public class LoginServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		
-		if (username.equals("admin")&&password.equals("admin")) {
-			response.sendRedirect("Online-Shop/manage");
+		AccountDAOImpl dao = new AccountDAOImpl();
+		Account a;
+		try {
+			a = dao.Login(username, password);
+			if(a == null) {
+				request.setAttribute("mess", "Wrong username or password");
+				request.getRequestDispatcher("/views/main/login.jsp").forward(request, response);
+			}else {
+				HttpSession session = request.getSession();
+				session.setAttribute("acc", a);
+				session.setMaxInactiveInterval(1000);
+				response.sendRedirect("home");
+			}
+		} 
+		catch (ClassNotFoundException | SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
-
 }
