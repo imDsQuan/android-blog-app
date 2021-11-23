@@ -21,10 +21,10 @@
 					<li><a href="${pageContext.request.contextPath}/electronic">Electronic</a></li>
 					<li><a href="${pageContext.request.contextPath}/clothes">Clothes</a></li>
 					<c:if test="${sessionScope.acc == null}">
-					<li><a href="${pageContext.request.contextPath}/login">Login</a></li>
+						<li><a href="${pageContext.request.contextPath}/login">Login</a></li>
 					</c:if>
 					<c:if test="${sessionScope.acc != null}">
-					<li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
+						<li><a href="${pageContext.request.contextPath}/logout">Logout</a></li>
 					</c:if>
 					
                 </ul>

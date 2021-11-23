@@ -33,6 +33,18 @@ public class Clothes {
 		this.typeClothes = typeClothes;
 		this.brand = brand;
 	}
+	
+	public Clothes(String name, String description, String material, int discount, double price,
+			String typeClothes, String brand) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.material = material;
+		this.discount = discount;
+		this.price = price;
+		this.typeClothes = typeClothes;
+		this.brand = brand;
+	}
 
 	public String getId() {
 		return id;

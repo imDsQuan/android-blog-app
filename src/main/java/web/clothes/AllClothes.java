@@ -35,7 +35,7 @@ public class AllClothes extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-String option = request.getParameter("search-option");
+		String option = request.getParameter("search-option");
 		
 		System.out.println("Search option: " + option);
 		
