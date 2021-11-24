@@ -17,6 +17,9 @@ import controller.*;
 import controller.clothesDAO.ClothesDAOImpl;
 import model.cart.Cart;
 import model.clothes.Clothes;
+import controller.shoeDAO.ShoeDAOImpl;
+import model.shoe.Shoe;
+
 
 /**
  * Servlet implementation class CartServlet
@@ -72,6 +75,12 @@ public class CartServlet extends HttpServlet {
 			System.out.println("Action = " + action);
 			cart.addQuantityClothes(id);
 
+		} else if (type.equalsIgnoreCase("model.shoe.Shoe")) {
+			String id = request.getParameter("id");
+			String action = request.getParameter("action");
+			System.out.println("ID = " + id);
+			System.out.println("Action = " + action);
+			cart.addQuantityShoe(id);
 		}
 		session.setAttribute("cart", cart);
 		response.sendRedirect("/Online-Shop/cart?action=view");
@@ -91,6 +100,12 @@ public class CartServlet extends HttpServlet {
 			System.out.println("Action = " + action);
 			cart.subQuantityClothes(id);
 
+		} else if(type.equalsIgnoreCase("model.shoe.Shoe")) {
+			String id = request.getParameter("id");
+			String action = request.getParameter("action");
+			System.out.println("ID = " + id);
+			System.out.println("Action = " + action);
+			cart.subQuantityShoe(id);
 		}
 		session.setAttribute("cart", cart);
 		response.sendRedirect("/Online-Shop/cart?action=view");
@@ -114,7 +129,15 @@ public class CartServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 
-		}
+		} else if(type.equalsIgnoreCase("model.shoe.Shoe")) {
+			String id = request.getParameter("id");
+			try {
+				cart.delShoeItem(id);
+			} catch (ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} 
 		session.setAttribute("cart", cart);
 		response.sendRedirect("/Online-Shop/cart?action=view");
 
@@ -134,6 +157,12 @@ public class CartServlet extends HttpServlet {
 			Clothes clothes = cart.getClothesItem(i);
 			listClothes.add(clothes);
 		}
+		
+		List<Shoe> listShoe = new ArrayList<>();
+		for (int i = 0; i < cart.numberOfShoe(); i++) {
+			Shoe shoe = cart.getShoeItem(i);
+			listShoe.add(shoe);
+		}
 
 		ClothesDAOImpl clothesDAO = new ClothesDAOImpl();
 
@@ -145,13 +174,27 @@ public class CartServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
+		
+		ShoeDAOImpl shoeDAO = new ShoeDAOImpl();
+
+		for (int i = 0; i < listShoe.size(); i++) {
+			try {
+				listShoe.get(i).setImage(shoeDAO.getImghByShoeCode(listShoe.get(i).getId()));
+			} catch (ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 
 		System.out.println("Total:" + total);
 		double sum = Math.round(total * 1.1 * 100.0) / 100.0;
 		request.setAttribute("listClothes", listClothes);
+		request.setAttribute("listShoe", listShoe);
 		request.setAttribute("subtotal", total);
 		request.setAttribute("tax", Math.round(total * 0.1 * 100.0) / 100.0);
 		request.setAttribute("total", sum);
+		
+		
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("views/main/cart.jsp");
 		dispatcher.forward(request, response);

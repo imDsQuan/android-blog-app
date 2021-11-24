@@ -70,6 +70,46 @@
             </tr>
             </c:forEach>
             
+            
+            
+            <c:forEach var="shoe" items="${listShoe}">
+            <tr>
+                <td>
+                    <div class="cart-info">
+                        <a href="shoe-detail?id=${shoe.id}"><img src="${pageContext.request.contextPath}/views/${shoe.image[0]}" alt=""></a>
+                        <div>
+                            <a href="shoe-detail?id=${shoe.id}">
+                            	<p>${shoe.name}</p>
+                            </a>
+                            <small>Price: $${shoe.price}0</small>
+                            <br>
+                            <small>Size: ${shoe.size}</small>
+                            <br>
+                            <a href="${pageContext.request.contextPath}/cart?action=delete&id=${shoe.id}&type=${shoe.getClass().getName()}">Remove</a>
+                        </div>
+                    </div>  
+                </td>
+                <td>
+	                	<div class="quantity">
+					      <form action="">
+					      		<a href="${pageContext.request.contextPath}/cart?id=${shoe.id}&action=add&type=${shoe.getClass().getName()}">
+						      		<button class="plus-btn" type="button" name="button">
+						      			<img src="https://designmodo.com/demo/shopping-cart/plus.svg" alt="" width="30px"  />
+						      		</button>
+					      		</a>
+					      		<input type="text" name="name" value="${shoe.amount}">
+						      	<a href="${pageContext.request.contextPath}/cart?id=${shoe.id}&action=sub&type=${shoe.getClass().getName()}">
+							      	<button class="minus-btn" type="button" name="button">
+							        	<img src="https://designmodo.com/demo/shopping-cart/minus.svg" alt="" width="30px"  />
+							      	</button>
+					      		</a>
+					      </form>
+	    				</div>
+                </td>
+                <td>$${shoe.amount*shoe.price}0</td>
+            </tr>
+            </c:forEach>
+            
         </table>
 
         <div class="total-price">
