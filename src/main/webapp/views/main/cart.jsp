@@ -128,6 +128,8 @@
                 </tr>
             </table>
         </div>
+        
+        <a class="btn" href="${pageContext.request.contextPath}/order">Place An Order &#8594;</a>
 
     </div>
 

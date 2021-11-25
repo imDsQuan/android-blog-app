@@ -21,7 +21,7 @@
         <div class="bg-white" id="sidebar-wrapper">
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom"><i class="fas fa-user-secret me-2"></i>Red Store</div>
             <div class="list-group list-group-flush my-3">
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                <a href="${pageContext.request.contextPath}/manage" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                     <i class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
                 <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                     <i class="fas fa-project-diagram me-2"></i>Customers</a>
@@ -33,8 +33,10 @@
                     <i class="fas fa-microscope me-2"></i>Electronic</a>
                 <a href="${pageContext.request.contextPath}/manage/clothes" class="list-group-item list-group-item-action bg-transparent second-text active">
                     <i class="fas fa-tshirt me-2"></i>Clothes</a>
-                <a href="#" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
+                <a href="${pageContext.request.contextPath}/manage/shoe" class="list-group-item list-group-item-action bg-transparent second-text fw-bold">
                     <i class="fas fa-socks me-2"></i>Shoes</a>
+               	<a href="#" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold">
+                	<i class="fas fa-power-off me-2"></i>Logout</a>
             </div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -87,7 +89,7 @@
                                     <td class="text-wrap" style="width:300px">
                                         <div class="product-name">
                                             <img src="${pageContext.request.contextPath}/views/${clothes.image[0]}" alt="" height="100px">
-                                            <h5>${clothes.name}</h5>
+                                            <a  href="${pageContext.request.contextPath}/clothes-detail?id=${clothes.id}" style="color:#000;text-decoration:none"><h5>${clothes.name}</h5></a>
                                         </div>
                                     </td>
                                     <td class="text-wrap align-middle" style="width:35rem;">${clothes.description}</td>

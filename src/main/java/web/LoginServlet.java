@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import controller.accountDAO.AccountDAOImpl;
+import controller.customerDAO.CustomerDAOImpl;
 import model.customer.Account;
+import model.customer.Customer;
 
 /**
  * Servlet implementation class LoginServlet
@@ -47,15 +49,19 @@ public class LoginServlet extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		AccountDAOImpl dao = new AccountDAOImpl();
+		CustomerDAOImpl cusDao = new CustomerDAOImpl();
+		Customer cus;
 		Account a;
 		try {
 			a = dao.Login(username, password);
+			cus = cusDao.getCustomerByID(dao.getCustomerIDByUsername(username));
 			if(a == null) {
 				request.setAttribute("mess", "Wrong username or password");
 				request.getRequestDispatcher("/views/main/login.jsp").forward(request, response);
 			}else {
 				HttpSession session = request.getSession();
 				session.setAttribute("acc", a);
+				session.setAttribute("customer", cus);
 				session.setMaxInactiveInterval(1000);
 				response.sendRedirect("home");
 			}

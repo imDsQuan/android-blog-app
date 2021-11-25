@@ -21,7 +21,7 @@ public class ShoeDAOImpl {
 		private static final String SELECT_ALL_SHOE = "select * from shoe";
 		private static final String SELECT_SHOE_BY_CODE = "select * from shoe where id = ?;";
 		private static final String SELECT_IMG_BY_CODE = "select * from shoeimage where shoeID =?";
-		private static final String UPDATE_SHOE = "update shoe set name = ?, description = ?, material = ?, discount = ?, price = ?, typeShoe = ?,warrantlyperiod = ?, brand = ? where id = ?;";
+		private static final String UPDATE_SHOE = "update shoe set name = ?, description = ?, material = ?, discount = ?, price = ?, typeShoe = ?,warrantlyperiod = ?, brands = ? where id = ?;";
 		private static final String INSERT_SHOE = "INSERT INTO shoe (description, Material, Name, Discount, Price, TypeShoe,Warrantlyperiod, Brand, id) VALUES (? ,?, ?, ?, ?, ?, ? , ?);";
 		private static final String INSERT_IMG = "INSERT INTO shoeimage (ShoeID, Url) VALUES (?, ?), (?, ?), (?, ?), (?, ?) ;";
 		private static final String DELETE_SHOE = "DELETE FROM shoe WHERE (ID = ?);";
@@ -276,7 +276,7 @@ public class ShoeDAOImpl {
 				double price = rs.getDouble("price");
 				String name = rs.getString("name");
 				String typeSho = rs.getString("typeShoe");
-				String brand = rs.getString("brand");
+				String brand = rs.getString("brands");
 				int discount = rs.getInt("discount");
 				String material = rs.getString("material");
 				String warrantlyperiod = rs.getString("warrantlyperiod");

@@ -64,19 +64,21 @@
                 </div>
                 <div class="signup-form">
                     <div class="title">Signup</div>
-                    <form action="#">
+                    <form action="${pageContext.request.contextPath}/sign-up" method="post">
+                    <br>
+                    <p class="text-danger" style="color: red">${messError}</p>
                         <div class="input-boxes">
                             <div class="input-box">
                                 <i class="fas fa-user"></i>
-                                <input type="text" placeholder="Enter your name" required>
+                                <input type="text" placeholder="Enter user name" required name="username">
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-envelope"></i>
-                                <input type="text" placeholder="Enter your email" required>
+                                <input type="password" placeholder="Enter your password" required name="password">
                             </div>
                             <div class="input-box">
                                 <i class="fas fa-lock"></i>
-                                <input type="password" placeholder="Enter your password" required>
+                                <input type="password" placeholder="Confirm your password" required>
                             </div>
                             <div class="button input-box">
                                 <input type="submit" value="Sumbit">

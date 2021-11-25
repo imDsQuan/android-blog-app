@@ -61,7 +61,7 @@
 		<div class="row">
 			<div class="col-4">
 				<img src="${pageContext.request.contextPath}/views/images/clothes/clothes_13/gallery_01.webp" alt=""> <a
-					href="product-detail?id=13">
+					href="clothes-detail?id=13">
 
 					<h4>KERMIT THE FROG © DISNEY T-SHIRT</h4>
 					<p>$50.00</p>
@@ -69,7 +69,7 @@
 			</div>
 			<div class="col-4">
 				<img src="${pageContext.request.contextPath}/views/images/clothes/clothes_14/gallery_01.webp" alt=""> <a
-					href="../product-detail?id=14">
+					href="clothes-detail?id=14">
 
 					<h4>GRAPHIC PRINT T-SHIRT</h4>
 					<p>$50.00</p>
@@ -77,7 +77,7 @@
 			</div>
 			<div class="col-4">
 				<img src="${pageContext.request.contextPath}/views/images/clothes/clothes_15/gallery_01.webp" alt=""> <a
-					href="product-detail?id=15">
+					href="clothes-detail?id=15">
 					<h4>T-SHIRT WITH EMBROIDERED BAND</h4>
 
 					<p>$50.00</p>
@@ -85,7 +85,7 @@
 			</div>
 			<div class="col-4">
 				<img src="${pageContext.request.contextPath}/views/images/clothes/clothes_16/gallery_01.webp" alt=""> <a
-					href="product-detail?id=16">
+					href="clothes-detail?id=16">
 					<h4>BOB MARLEY © ZION ROOTSWEAR PRINT T-SHIRT</h4>
 
 					<p>$50.00</p>
@@ -97,7 +97,7 @@
 		<div class="row">
 			<div class="col-4">
 				<img src="${pageContext.request.contextPath}/views/images/clothes/clothes_26/gallery_01.webp" alt=""> <a
-					href="product-detail?id=26">
+					href="clothes-detail?id=26">
 					<h4>OVERSIZE PLEATED TROUSERS</h4>
 
 					<p>$50.00</p>
@@ -105,7 +105,7 @@
 			</div>
 			<div class="col-4">
 				<img src="${pageContext.request.contextPath}/views/images/clothes/clothes_27/gallery_01.webp" alt=""> <a
-					href="product-detail?id=27">
+					href="clothes-detail?id=27">
 					<h4>LIMITED EDITION TROUSERS WITH CONTRAST TURN-UP</h4>
 
 					<p>$50.00</p>
@@ -113,7 +113,7 @@
 			</div>
 			<div class="col-4">
 				<img src="${pageContext.request.contextPath}/views/images/clothes/clothes_28/gallery_01.webp" alt=""> <a
-					href="product-detail?id=28">
+					href="clothes-detail?id=28">
 					<h4>LIMITED EDITION STRIPED SUIT TROUSERS</h4>
 
 					<p>$50.00</p>
@@ -121,7 +121,7 @@
 			</div>
 			<div class="col-4">
 				<img src="${pageContext.request.contextPath}/views/images/clothes/clothes_29/gallery_01.webp" alt=""> <a
-					href="product-detail?id=29"><h4>LIMITED EDITION WOOL
+					href="clothes-detail?id=29"><h4>LIMITED EDITION WOOL
 						TROUSERS</h4>
 
 					<p>$50.00</p></a>

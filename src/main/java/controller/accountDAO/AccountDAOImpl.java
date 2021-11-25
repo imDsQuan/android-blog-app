@@ -25,4 +25,28 @@ public class AccountDAOImpl {
 		}
 		return null;
 	}
+	
+	public Account getAccountByUsername(String user) throws ClassNotFoundException, SQLException {
+		String q = "Select * from account where Username = ?;";
+		Connection conn = getConnection();
+		PreparedStatement ps = conn.prepareStatement(q);
+		ps.setString(1, user);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+			return new Account(rs.getInt(1), rs.getString(2), rs.getString(3));
+		}
+		return null;
+	}
+	
+	public int getCustomerIDByUsername(String user) throws ClassNotFoundException, SQLException {
+		String q = "Select CustomerID from account where Username = ?;";
+		Connection conn = getConnection();
+		PreparedStatement ps = conn.prepareStatement(q);
+		ps.setString(1, user);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+			return rs.getInt(1);
+		}
+		return 0;
+	}
 }

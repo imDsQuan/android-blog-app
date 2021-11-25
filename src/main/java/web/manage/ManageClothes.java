@@ -133,7 +133,7 @@ public class ManageClothes extends HttpServlet {
 		String fileName2 = part2.getSubmittedFileName();
 		String fileName3 = part3.getSubmittedFileName();
 		String fileName4 = part4.getSubmittedFileName();
-		String savePath = "C:\\Users\\Admin\\eclipse-workspace\\Online-Shop\\src\\main\\webapp\\views\\images\\clothes";
+		String savePath = "C:\\Users\\Admin\\git\\online_shop\\src\\main\\webapp\\views\\images\\clothes";
 		savePath.replace('\\', '/');
 		String filePath1 = savePath + File.separator + fileName1;
 		String filePath2 = savePath + File.separator + fileName2;

@@ -51,7 +51,7 @@
 			<c:forEach var="shoe" items="${shoeList}">
             	<div class="col-4">
 	                <img src="${pageContext.request.contextPath}/views/${shoe.image[0]}" alt="">
-	                <a  href="shoe-detail?id=${shoe.id}"> <h4><c:out value="${shoe.name}"/></h4></a>
+	                <a  href="${pageContext.request.contextPath}/shoe-detail?id=${shoe.id}"> <h4><c:out value="${shoe.name}"/></h4></a>
 	                
 	                <p>$<c:out value="${shoe.price}"/>0</p>
             	</div>

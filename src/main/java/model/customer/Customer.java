@@ -5,7 +5,7 @@ import java.util.Date;
 public class Customer {
 	private int id;
 	private String tel;
-	private Date dob;
+	private String dob;
 	private String gender;
 	private FullName fullname;
 	private Address address;
@@ -16,13 +16,20 @@ public class Customer {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Customer(String tel, Date dob, String gender) {
+	public Customer(String tel, String dob, String gender) {
 		this.tel = tel;
 		this.dob = dob;
 		this.gender = gender;
 	}
 
-	public Customer(int id, String tel, Date dob, String gender, FullName fullname, Address address) {
+	public Customer(int id, String tel, String dob, String gender) {
+		this.id = id;
+		this.tel = tel;
+		this.dob = dob;
+		this.gender = gender;
+	}
+
+	public Customer(int id, String tel, String dob, String gender, FullName fullname, Address address) {
 		this.id = id;
 		this.tel = tel;
 		this.dob = dob;
@@ -31,7 +38,7 @@ public class Customer {
 		this.address = address;
 	}
 
-	public Customer(String tel, Date dob, String gender, FullName fullname, Address address) {
+	public Customer(String tel, String dob, String gender, FullName fullname, Address address) {
 		this.tel = tel;
 		this.dob = dob;
 		this.gender = gender;
@@ -55,11 +62,11 @@ public class Customer {
 		this.tel = tel;
 	}
 
-	public Date getDob() {
+	public String getDob() {
 		return dob;
 	}
 
-	public void setDob(Date dob) {
+	public void setDob(String dob) {
 		this.dob = dob;
 	}
 

@@ -10,7 +10,7 @@ public class CustomerMember extends Customer {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CustomerMember(int id, String tel, Date dob, String gender, FullName fullname, Address address) {
+	public CustomerMember(int id, String tel, String dob, String gender, FullName fullname, Address address) {
 		super(id, tel, dob, gender, fullname, address);
 		// TODO Auto-generated constructor stub
 	}
