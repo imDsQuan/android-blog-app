@@ -54,7 +54,7 @@
 					<c:out value='${clothes.price}'/>0 $
 				</h4>
 				<form action="${pageContext.request.contextPath}/add-to-cart" id="my_form" method="post">
-				<select name="size" id="sizeChoosed">
+				<select name="size" id="sizeChoosed" required>
 					<option value="">Select Size</option>
 					<option value="S">S</option>
 					<option value="M">M</option>

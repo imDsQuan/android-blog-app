@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import controller.clothesDAO.*;
 import model.clothes.*;
+import model.clothesItem.ClothesItem;
 import model.cart.Cart;
 import controller.shoeDAO.*;
 import model.shoe.*;
@@ -94,9 +95,8 @@ public class AddToCartServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		clothes.setSize(size);
-		clothes.setAmount(am);
-		cart.addClothesToCart(clothes);
+		ClothesItem clothesItem = new ClothesItem(size, clothes.getPrice(), Integer.parseInt(amount), clothes.getDiscount(), clothes);
+		cart.addClothesToCart(clothesItem);
 		session.setAttribute("cart", cart);
 	}
 	

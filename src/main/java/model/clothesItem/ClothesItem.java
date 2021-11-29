@@ -3,9 +3,7 @@ package model.clothesItem;
 import model.clothes.Clothes;
 
 public class ClothesItem {
-	private int barcode;
-	private String color;
-	private int size;
+	private String size;
 	private double price;
 	private int amount;
 	private int discount;
@@ -14,9 +12,7 @@ public class ClothesItem {
 	public ClothesItem() {
 	}
 
-	public ClothesItem(int barcode, String color, int size, double price, int amount, int discount, Clothes clothes) {
-		this.barcode = barcode;
-		this.color = color;
+	public ClothesItem(String size, double price, int amount, int discount, Clothes clothes) {
 		this.size = size;
 		this.price = price;
 		this.amount = amount;
@@ -24,27 +20,12 @@ public class ClothesItem {
 		this.clothes = clothes;
 	}
 
-	public int getBarcode() {
-		return barcode;
-	}
 
-	public void setBarcode(int barcode) {
-		this.barcode = barcode;
-	}
-
-	public String getColor() {
-		return color;
-	}
-
-	public void setColor(String color) {
-		this.color = color;
-	}
-
-	public int getSize() {
+	public String getSize() {
 		return size;
 	}
 
-	public void setSize(int size) {
+	public void setSize(String size) {
 		this.size = size;
 	}
 
