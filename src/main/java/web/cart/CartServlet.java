@@ -17,9 +17,9 @@ import controller.*;
 import controller.clothesDAO.ClothesDAOImpl;
 import model.cart.Cart;
 import model.clothes.Clothes;
+import model.clothesItem.ClothesItem;
 import controller.shoeDAO.ShoeDAOImpl;
 import model.shoe.Shoe;
-
 
 /**
  * Servlet implementation class CartServlet
@@ -68,12 +68,13 @@ public class CartServlet extends HttpServlet {
 		System.out.println(type);
 		HttpSession session = request.getSession();
 		Cart cart = (Cart) session.getAttribute("cart");
-		if (type.equalsIgnoreCase("model.clothes.Clothes")) {
+		if (type.equalsIgnoreCase("model.clothesItem.ClothesItem")) {
 			String id = request.getParameter("id");
 			String action = request.getParameter("action");
+			String size = request.getParameter("size");
 			System.out.println("ID = " + id);
 			System.out.println("Action = " + action);
-			cart.addQuantityClothes(id);
+			cart.addQuantityClothesItem(id, size);
 
 		} else if (type.equalsIgnoreCase("model.shoe.Shoe")) {
 			String id = request.getParameter("id");
@@ -93,14 +94,23 @@ public class CartServlet extends HttpServlet {
 		System.out.println(type);
 		HttpSession session = request.getSession();
 		Cart cart = (Cart) session.getAttribute("cart");
-		if (type.equalsIgnoreCase("model.clothes.Clothes")) {
+		if (type.equalsIgnoreCase("model.clothesItem.ClothesItem")) {
 			String id = request.getParameter("id");
 			String action = request.getParameter("action");
+			String size = request.getParameter("size");
 			System.out.println("ID = " + id);
 			System.out.println("Action = " + action);
-			cart.subQuantityClothes(id);
+			Clothes clothes = null;
+			ClothesDAOImpl dao = new ClothesDAOImpl();
+			try {
+				clothes = dao.getClothByCode(id);
+			} catch (ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			cart.subQuantityClothesItem(id, size);
 
-		} else if(type.equalsIgnoreCase("model.shoe.Shoe")) {
+		} else if (type.equalsIgnoreCase("model.shoe.Shoe")) {
 			String id = request.getParameter("id");
 			String action = request.getParameter("action");
 			System.out.println("ID = " + id);
@@ -120,16 +130,17 @@ public class CartServlet extends HttpServlet {
 		Cart cart = (Cart) session.getAttribute("cart");
 		if (cart == null)
 			cart = new Cart();
-		if (type.equalsIgnoreCase("model.clothes.Clothes")) {
+		if (type.equalsIgnoreCase("model.clothesItem.ClothesItem")) {
 			String id = request.getParameter("id");
+			String size = request.getParameter("size");
 			try {
-				cart.delClothesItem(id);
+				cart.delClothesItem(id, size);
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
-		} else if(type.equalsIgnoreCase("model.shoe.Shoe")) {
+		} else if (type.equalsIgnoreCase("model.shoe.Shoe")) {
 			String id = request.getParameter("id");
 			try {
 				cart.delShoeItem(id);
@@ -137,7 +148,7 @@ public class CartServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		} 
+		}
 		session.setAttribute("cart", cart);
 		response.sendRedirect("/Online-Shop/cart?action=view");
 
@@ -152,12 +163,12 @@ public class CartServlet extends HttpServlet {
 		if (cart == null)
 			cart = new Cart();
 		total = cart.totalMoney();
-		List<Clothes> listClothes = new ArrayList<>();
+		List<ClothesItem> listClothes = new ArrayList<>();
 		for (int i = 0; i < cart.numberOfClothes(); i++) {
-			Clothes clothes = cart.getClothesItem(i);
+			ClothesItem clothes = cart.getClothesItem(i);
 			listClothes.add(clothes);
 		}
-		
+
 		List<Shoe> listShoe = new ArrayList<>();
 		for (int i = 0; i < cart.numberOfShoe(); i++) {
 			Shoe shoe = cart.getShoeItem(i);
@@ -168,13 +179,14 @@ public class CartServlet extends HttpServlet {
 
 		for (int i = 0; i < listClothes.size(); i++) {
 			try {
-				listClothes.get(i).setImage(clothesDAO.getImghByClothCode(listClothes.get(i).getId()));
+				listClothes.get(i).getClothes()
+						.setImage(clothesDAO.getImghByClothCode(listClothes.get(i).getClothes().getId()));
 			} catch (ClassNotFoundException | SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		
+
 		ShoeDAOImpl shoeDAO = new ShoeDAOImpl();
 
 		for (int i = 0; i < listShoe.size(); i++) {
@@ -193,8 +205,6 @@ public class CartServlet extends HttpServlet {
 		request.setAttribute("subtotal", total);
 		request.setAttribute("tax", Math.round(total * 0.1 * 100.0) / 100.0);
 		request.setAttribute("total", sum);
-		
-		
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher("views/main/cart.jsp");
 		dispatcher.forward(request, response);

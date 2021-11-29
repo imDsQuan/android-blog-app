@@ -12,8 +12,6 @@ public class Clothes {
 	private double price;
 	private String typeClothes;
 	private String brand;
-	private String size;
-	private int amount;
 	List<String> image = new ArrayList<>();
 	List<String> color = new ArrayList<>();
 	
@@ -126,22 +124,6 @@ public class Clothes {
 		this.color = color;
 	}
 
-	public int getAmount() {
-		return amount;
-	}
-
-	public void setAmount(int amount) {
-		this.amount = amount;
-	}
-
-	public String getSize() {
-		return size;
-	}
-
-	public void setSize(String size) {
-		this.size = size;
-	}
-	
 	
 	
 	

@@ -36,29 +36,29 @@
             <tr>
                 <td>
                     <div class="cart-info">
-                        <a href="clothes-detail?id=${clothes.id}"><img src="${pageContext.request.contextPath}/views/${clothes.image[0]}" alt=""></a>
+                        <a href="clothes-detail?id=${clothes.clothes.id}"><img src="${pageContext.request.contextPath}/views/${clothes.clothes.image[0]}" alt=""></a>
                         <div>
-                            <a href="clothes-detail?id=${clothes.id}">
-                            	<p>${clothes.name}</p>
+                            <a href="clothes-detail?id=${clothes.clothes.id}">
+                            	<p>${clothes.clothes.name}</p>
                             </a>
                             <small>Price: $${clothes.price}0</small>
                             <br>
                             <small>Size: ${clothes.size}</small>
                             <br>
-                            <a href="${pageContext.request.contextPath}/cart?action=delete&id=${clothes.id}&type=${clothes.getClass().getName()}">Remove</a>
+                            <a href="${pageContext.request.contextPath}/cart?action=delete&id=${clothes.clothes.id}&type=${clothes.getClass().getName()}&size=${clothes.size}">Remove</a>
                         </div>
                     </div>  
                 </td>
                 <td>
 	                	<div class="quantity">
 					      <form action="">
-					      		<a href="${pageContext.request.contextPath}/cart?id=${clothes.id}&action=add&type=${clothes.getClass().getName()}">
+					      		<a href="${pageContext.request.contextPath}/cart?id=${clothes.clothes.id}&action=add&type=${clothes.getClass().getName()}&size=${clothes.size}">
 						      		<button class="plus-btn" type="button" name="button">
 						      			<img src="https://designmodo.com/demo/shopping-cart/plus.svg" alt="" width="30px"  />
 						      		</button>
 					      		</a>
 					      		<input type="text" name="name" value="${clothes.amount}">
-						      	<a href="${pageContext.request.contextPath}/cart?id=${clothes.id}&action=sub&type=${clothes.getClass().getName()}">
+						      	<a href="${pageContext.request.contextPath}/cart?id=${clothes.clothes.id}&action=sub&type=${clothes.getClass().getName()}&size=${clothes.size}">
 							      	<button class="minus-btn" type="button" name="button">
 							        	<img src="https://designmodo.com/demo/shopping-cart/minus.svg" alt="" width="30px"  />
 							      	</button>

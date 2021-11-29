@@ -14,7 +14,7 @@ public class AccountDAOImpl {
 		return connection;
 	}
 	public Account Login(String user, String pass) throws ClassNotFoundException, SQLException {
-		String q = "Select * from account where Username = ? and `Password` = ?;";
+		String q = "from account where Username = ? and `Password` = ?;";
 		Connection conn = getConnection();
 		PreparedStatement ps = conn.prepareStatement(q);
 		ps.setString(1, user);
